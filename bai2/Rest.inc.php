@@ -5,17 +5,11 @@
 		
 		public $_allow = array();
 		public $_content_type = "application/json";
-		public $_request = array();
-		
-		private $_method = "";		
+		public $_request = array();	
 		private $_code = 200;
 		
 		public function __construct(){
 			$this->inputs();
-		}
-		
-		public function get_referer(){
-			return $_SERVER['HTTP_REFERER'];
 		}
 		
 		public function response($data,$status){
@@ -52,7 +46,6 @@
 				case "DELETE":
 					break;
 				case "PUT":
-
 					break;
 				default:
 					$this->response('',406);

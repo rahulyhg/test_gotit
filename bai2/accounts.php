@@ -2,19 +2,15 @@
 	require_once("Rest.inc.php");
 	require_once("Utils.php");
 	require_once("Db.php");
-
-
 	Class Accounts extends REST{
-
 		public function __construct(){
-			parent::__construct();// Init parent contructor
+			parent::__construct();
 		}
 
 		public function signin(){
 			if($this->get_request_method() != "POST"){
 				$this->response('',406);
 			}
-
 			$email = $this->_request['email'];
 			$password = $this->_request['pwd'];
 			$db = new DB();
@@ -25,10 +21,7 @@
 					$sql = "SELECT _uid, _email FROM users WHERE _email = '$email' AND _password = '".md5($password)."' LIMIT 1";
 					$rs = $db->query($sql);
 					if($rs->num_rows > 0){
-						// If success everythig is good send header as "OK" and user details
-						// $result = $rs->fetch_array();
-						// $this->response($ultis->json($result), 200);
-						//return authenticated key (sample)
+						// If success return authenticated key (sample)
 						$result = array('access_token' => "633uq4t0qdtd1mdllnv2h1vs32");
 						$this->response($ultis->json($result), 200);
 					}
@@ -38,7 +31,6 @@
 			$error = array('status' => "Failed", "msg" => "Invalid Email address or Password");
 			$this->response($ultis->json($error), 400);
 		}
-		
 
 	}
 

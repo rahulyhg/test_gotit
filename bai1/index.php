@@ -8,7 +8,7 @@
   function creat_test_file($filename,$max){
     $myfile = fopen($filename, "w") or die("Unable to open file!");
     for ($i=0; $i <$max; $i++) {
-       $number = rand(0,$max);
+       $number = rand(1,$max);
        $number = "$number\n";
        fwrite($myfile, $number);
       }  
@@ -20,9 +20,10 @@
 
 //=========================================================
   //read all file and save to result array
-  //creat_test_file("testfile100000000.txt",100000000);
-  $handle = fopen("testfile1000000.txt", "r");
-  $max_number = 1000000;
+  // creat_test_file("testfile5000000.txt",5000000);
+  $handle = fopen("testfile5000000.txt", "r");
+  //$handle = false;
+  $max_number = 5000000;
   // $max_number = 2147483647;//max number of integer 32bit
   $rs_arr = array();
   $rs_arr[0] = 0;
@@ -42,13 +43,12 @@
       $bin_str = substr("00000000000000000000000000000000",0,32 - strlen($bin_str)) . $bin_str;
       //save $number is exits
       $bin_str[$n] = "1";
-
+      //convert binary string to number
       $new_num = bindec($bin_str);
       $rs_arr[$m] = $new_num;
     }
     fclose($handle);
-    // echo count($rs_arr);die;
-    ksort($rs_arr);
+    //ksort($rs_arr);
     //read array to print value
     $rs_file = fopen("rs_file.txt", "w") or die("Unable to open file!");
     foreach ($rs_arr as $key => $n) {

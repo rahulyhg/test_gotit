@@ -22,7 +22,6 @@
 			}else{
 				$this->response("", 401);
 			}
-			//if not
 			//deffault token: 633uq4t0qdtd1mdllnv2h1vs32
 			if($authen_key !="633uq4t0qdtd1mdllnv2h1vs32"){
 				$this->response("", 403);
