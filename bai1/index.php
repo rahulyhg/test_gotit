@@ -20,9 +20,9 @@
 
 //=========================================================
   //read all file and save to result array
-  //creat_test_file("testfile200.txt",200);
-  $handle = fopen("testfile200.txt", "r");
-  $max_number = 200;
+  //creat_test_file("testfile100000000.txt",100000000);
+  $handle = fopen("testfile1000000.txt", "r");
+  $max_number = 1000000;
   // $max_number = 2147483647;//max number of integer 32bit
   $rs_arr = array();
   $rs_arr[0] = 0;
@@ -47,24 +47,24 @@
       $rs_arr[$m] = $new_num;
     }
     fclose($handle);
-  } else {
-    // error opening the file.
-  } 
-  ksort($rs_arr);
-  //read array to print value
-  foreach ($rs_arr as $key => $n) {
-    $bin_str = decbin($n);
-    $bin_str = substr("00000000000000000000000000000000",0,32 - strlen($bin_str)) . $bin_str;
-    
-      echo "rs_arr[$key] <br>";
-      echo "binary string: $bin_str <br>";
-    
-    for ($j=0; $j < strlen($bin_str); $j++) {
-      if( ($bin_str[$j] == "0") && ( ($key*32 + $j) < $max_number ) ){
-        $num =  ($key*32) + $j;
-        echo "$num<br>";
+    // echo count($rs_arr);die;
+    ksort($rs_arr);
+    //read array to print value
+    $rs_file = fopen("rs_file.txt", "w") or die("Unable to open file!");
+    foreach ($rs_arr as $key => $n) {
+      $bin_str = decbin($n);
+      $bin_str = substr("00000000000000000000000000000000",0,32 - strlen($bin_str)) . $bin_str;
+      for ($j=0; $j < strlen($bin_str); $j++) {
+        if( ($bin_str[$j] == "0") && ( ($key*32 + $j) < $max_number ) ){
+          $num =  ($key*32) + $j;
+          // echo "$num<br>";
+          fwrite($rs_file, "$num\n");
+        }
       }
     }
+    fclose($rs_file);
+  } else {
+    // error opening the file.
   }
   
 

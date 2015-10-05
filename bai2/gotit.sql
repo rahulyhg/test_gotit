@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2015 at 01:10 PM
+-- Generation Time: Oct 05, 2015 at 01:46 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -35,7 +35,21 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `_subject` int(2) NOT NULL,
   PRIMARY KEY (`_qid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`_qid`, `_uid`, `_title`, `_content`, `_created`, `_subject`) VALUES
+(1, 1, 'why 1?', '.....', '2015-10-05 10:26:00', 3),
+(2, 1, 'why 2?', '.....', '2015-10-05 10:26:00', 3),
+(3, 1, 'why 3?', '...', '2015-10-05 10:26:35', 1),
+(4, 1, 'why 4?', '...', '2015-10-05 10:26:35', 3),
+(5, 1, 'why 5?', '...', '2015-10-05 10:27:03', 3),
+(6, 1, 'why 6?', '...', '2015-10-05 10:27:03', 3),
+(7, 1, 'why 7?', '...', '2015-10-05 10:27:21', 3),
+(8, 1, 'why 8?', '...', '2015-10-05 10:27:21', 3);
 
 -- --------------------------------------------------------
 
