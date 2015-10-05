@@ -44,6 +44,10 @@
       return( $arh );
     }
 
+    function getUserIdFromToken($token="633uq4t0qdtd1mdllnv2h1vs32"){
+      //return default id
+      return 1;
+    }
 
   }
 ?>

@@ -26,24 +26,24 @@
 					$rs = $db->query($sql);
 					if($rs->num_rows > 0){
 						// If success everythig is good send header as "OK" and user details
-						$result = $rs->fetch_array(MYSQLI_NUM);
+						// $result = $rs->fetch_array();
+						// $this->response($ultis->json($result), 200);
+						//return authenticated key (sample)
+						$result = array('access_token' => "633uq4t0qdtd1mdllnv2h1vs32");
 						$this->response($ultis->json($result), 200);
 					}
-					$this->response('No Content', 200);	// If no records "No Content" status
 				}
 			}
-
 			// If invalid inputs "Bad Request" status message and reason
 			$error = array('status' => "Failed", "msg" => "Invalid Email address or Password");
 			$this->response($ultis->json($error), 400);
 		}
+		
 
 	}
 
 	$ultis = new Utils();
 	$user = new Accounts();
-	$header = $ultis->request_headers();
-	var_dump($header);die;
 	$ultis->router($user);
 
 ?>
